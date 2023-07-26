@@ -1,6 +1,6 @@
 
 
-
+// 자바스크립트 공부용
 // console.log(variable());
 // console.log(Maths());
 
