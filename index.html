@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Codeit JavaScript</title>
+    <style>
+    #btn1{
+        border: 2px solid blue;
+        color: red;
+        background-color:rgba(0,0,0,0);
+        margin: 20px;
+        padding : 10px;
+        border-radius: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <button onclick='alert("버튼 누름")' id="btn1">버튼 테스트</button>
+    <form>
+        이름 : <input type="text" id="inputName">
+        전화번호 : <input type="text" id="inputTel">
+    </form>
+    <button id="btn2">회원 생성</button>
+    <button id="btn3">회원 정보 불러오기</button>
+
+
+    <script src="./index.js"></script>
+
+    <script>
+        // arrs();      
+        btn1.addEventListener('click', () => {
+          if(btn1.style.backgroundColor == 'blue'){
+          btn1.style.backgroundColor = 'white';
+          }
+          else{
+          btn1.style.backgroundColor = 'blue';
+          }
+        });
+        
+        btn2.addEventListener('click', () => {
+            // let name = prompt("이름을 입력해주세요");
+            let name = document.getElementById("inputName").value;
+            let tel = document.getElementById("inputTel").value;
+            if(name == ""){alert("이름을 입력해주세요");}
+            else if(tel == ""){alert("번호를 입력해주세요");}
+            else{
+                memberAdd(name,tel);
+                alert(name+'님의 가입을 축하드립니다!')
+            }
+        });
+
+        btn3.addEventListener('click', () => {
+            
+            let findName = memberFind();
+            if(findName == undefined){
+                alert("해당 번호는 존재하지 않습니다.");
+             } 
+             else{
+                alert("해당 번호의 이름은"+findName+"입니다.");
+             }
+            
+        });
+
+
+        // var id = prompt('아이디를 입력해주세요');
+        // alert(id);
+    </script>
+</body>
+</html>
