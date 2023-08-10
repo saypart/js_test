@@ -1,31 +1,78 @@
 <!DOCTYPE html>
 <html lang="ko">
+<link rel="stylesheet" href="style.css">    
 <head>
     <meta charset="UTF-8">
-    <title>Codeit JavaScript</title>
-    <style>
-    #btn1{
-        border: 2px solid blue;
-        color: red;
-        background-color:rgba(0,0,0,0);
-        margin: 20px;
-        padding : 10px;
-        border-radius: 20px;
-        }
-    </style>
+    <title>JavaScript Test</title>
 
 </head>
 <body>
     <button onclick='alert("버튼 누름")' id="btn1">버튼 테스트</button>
     <form>
-        이름 : <input type="text" id="inputName">
+        이름 : <input type="text" id="inputName"><br>
         전화번호 : <input type="text" id="inputTel">
-    </form>
+    </form>    
     <button id="btn2">회원 생성</button>
     <button id="btn3">회원 정보 불러오기</button>
+    <button id="btn4">회원 정보 전부 불러오기</button>
 
+    <style type="text/css">
+        </style>
+        <table class="tg">
+        <thead>
+          <tr>
+            <th class="tg-0lax">ID</th>
+            <th class="tg-0lax">이름</th>
+            <th class="tg-0lax">전화번호</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="tg-0lax"><input type="text" id="getId0" value=""></td>
+            <td class="tg-0lax"><input type="text" id="getName0" value=""></td>
+            <td class="tg-0lax"><input type="text" id="getTel0" value=""></td>
+          </tr>
+          <tr>
+            <td class="tg-0lax"><input type="text" id="getId1" value=""></td>
+            <td class="tg-0lax"><input type="text" id="getName1" value=""></td>
+            <td class="tg-0lax"><input type="text" id="getTel1" value=""></td>
+          </tr>
+          <tr>
+            <td class="tg-0lax"><input type="text" id="getId2" value=""></td>
+            <td class="tg-0lax"><input type="text" id="getName2" value=""></td>
+            <td class="tg-0lax"><input type="text" id="getTel2" value=""></td>
+          </tr>
+          <tr>
+            <td class="tg-0lax"><input type="text" id="getId3" value=""></td>
+            <td class="tg-0lax"><input type="text" id="getName3" value=""></td>
+            <td class="tg-0lax"><input type="text" id="getTel3" value=""></td>
+          </tr>
+          <tr>
+            <td class="tg-0lax"><input type="text" id="getId4" value=""></td>
+            <td class="tg-0lax"><input type="text" id="getName4" value=""></td>
+            <td class="tg-0lax"><input type="text" id="getTel4" value=""></td>
+          </tr>
+        </tbody>
+        </table>
 
-    <script src="./index.js"></script>
+        <!-- <table id="kgTable">
+            <thead>
+              <tr>
+                <th>중량값</th>
+                <th>작동 시간</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <button onclick="tableCreate()">table_append</button>
+
+        -->
+        <script src="./index.js"></script>
 
     <script>
         // arrs();      
@@ -44,6 +91,8 @@
             let tel = document.getElementById("inputTel").value;
             if(name == ""){alert("이름을 입력해주세요");}
             else if(tel == ""){alert("번호를 입력해주세요");}
+            else if(tel.length !== 11){alert("번호를 다시 확인해주세요");}
+            else if(phoneNumFind(tel) !== -1){alert("이미 가입된 번호입니다.");}
             else{
                 memberAdd(name,tel);
                 alert(name+'님의 가입을 축하드립니다!')
@@ -61,6 +110,24 @@
              }
             
         });
+
+
+        btn4.addEventListener('click', () => {
+        memberFindAll();
+            for (var i = 0; i < memberAllcount(); i++){
+                document.getElementById('getId'+i).value = listAlls[i]['아이디']; 
+                document.getElementById('getName'+i).value = listAlls[i]['이름'];
+                document.getElementById('getTel'+i).value = listAlls[i]['전화번호']; 
+            }});
+
+
+        // btn4.addEventListener('click', () => {
+        //     tableCreate();
+        // });
+
+
+
+        
 
 
         // var id = prompt('아이디를 입력해주세요');
